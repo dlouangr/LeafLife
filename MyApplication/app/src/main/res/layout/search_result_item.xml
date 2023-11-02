@@ -1,0 +1,45 @@
+<!-- res/layout/search_result_item.xml -->
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/search_result_background"> <!-- You can create a drawable for the background -->
+
+    <!-- Square Image -->
+    <ImageView
+        android:id="@+id/resultImage"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_margin="8dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/placeholder_image"
+        android:scaleType="centerCrop" />
+
+    <!-- Text Content -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/resultImage"
+        android:layout_margin="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/resultTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Search Result Title"
+            android:textSize="18sp"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/resultDescription"
+            android:layout_width="match_parent"
+            android:layout_height="95dp"
+            android:text="Description of the search result goes here."
+            android:textColor="#666"
+            android:textSize="14sp" />
+    </LinearLayout>
+</RelativeLayout>
