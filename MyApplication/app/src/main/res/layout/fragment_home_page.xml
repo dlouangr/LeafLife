@@ -9,30 +9,34 @@
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="136dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="136dp"
+        android:layout_width="134dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="60dp"
+        android:layout_marginEnd="140dp"
         android:text="Welcome User"
         android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="132dp"
-        android:layout_height="126dp"
-        android:layout_marginStart="136dp"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="140dp"
         android:layout_marginTop="100dp"
+        android:layout_marginEnd="140dp"
+        android:src="@drawable/avatar_profile"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/avatar_profile" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="301dp"
         android:text="Plants"
         android:textSize="16dp"
@@ -43,22 +47,10 @@
         android:id="@+id/addButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="39dp"
+        android:layout_marginStart="35dp"
         android:layout_marginTop="349dp"
         android:backgroundTint="#13600D"
         android:text="Add Plants"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/imageButton2"
-        android:layout_width="65dp"
-        android:layout_height="58dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:color/transparent"
-        android:src="@android:drawable/ic_dialog_dialer"
-        android:contentDescription="Open menu"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
