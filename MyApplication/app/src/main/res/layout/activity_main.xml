@@ -11,33 +11,33 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/top_toolbar"
         android:layout_width="0dp"
-        android:layout_height="?attr/actionBarSize"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toTopOf="parent">
 
         <!-- Add a TextView for centered text -->
         <TextView
             android:id="@+id/title_text"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="LeafLife"
-            android:textSize="36sp"
-            android:textStyle="bold"
             android:layout_gravity="center"
+            android:contentDescription="Logo Text"
+            android:text="LeafLife"
             android:textColor="#000000"
-            android:contentDescription="Logo Text" />
+            android:textSize="24sp"
+            android:textStyle="bold" />
 
         <!-- Add settings icon to the top right -->
         <ImageView
             android:id="@+id/settings_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_gravity="right"
+            android:contentDescription="Settings Icon"
             android:src="@drawable/settings_24"
-            android:layout_gravity="end"
-            android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
-            android:contentDescription="Settings Icon" />
+            tools:layout_editor_absoluteX="355dp"
+            tools:layout_editor_absoluteY="8dp" />
 
     </androidx.appcompat.widget.Toolbar>
 
