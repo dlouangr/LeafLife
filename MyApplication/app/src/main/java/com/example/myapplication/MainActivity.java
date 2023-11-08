@@ -19,8 +19,7 @@ public class MainActivity extends AppCompatActivity {
         // Initialize the BottomNavigationView
         bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnItemSelectedListener(item -> {
-            // Handle item selection here
-            return true; // Return true if you've handled the item, false otherwise
+            return onNavigationItemSelected(item);
         });
 
         if (savedInstanceState == null) {
@@ -41,7 +40,15 @@ public class MainActivity extends AppCompatActivity {
         } else if (item.getItemId() == R.id.navigation_social) {
             selectedFragment = new SocialPage();
         }
-        return false;
+
+        if (selectedFragment != null) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.fragmentContainer, selectedFragment)
+                    .commit();
+            return true; // Return true if you've handled the item
+        }
+
+        return false; // Return false if you haven't handled the item
     }
 
     private void replaceFragment(Fragment fragment) {
