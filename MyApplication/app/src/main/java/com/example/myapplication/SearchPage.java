@@ -62,7 +62,7 @@ public class SearchPage extends Fragment {
         String query = searchEditText.getText().toString();
         if (!query.isEmpty()) {
             // Make API request
-            Call<JsonObject> call = trefleAPI.searchPlants(query, "YOUR_TREFLE_TOKEN");
+            Call<JsonObject> call = trefleAPI.searchPlants(query, "Kp-iRX49lqA7O9-zm5HO1NiperZb4Qs6HAo-jtt6oaI");
             call.enqueue(new Callback<JsonObject>() {
                 @Override
                 public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
