@@ -38,7 +38,7 @@ public class SearchResultsAdapter extends RecyclerView.Adapter<SearchResultsAdap
 
         // Bind data to ViewHolder views
         holder.resultTitle.setText(plant.getCommonName());
-        holder.resultDescription.setText(plant.getFamily());
+        holder.resultDescription.setText(plant.getScientificName());
 
         // Load images using Glide
         Glide.with(context)

@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,7 +59,7 @@ public class SearchPage extends Fragment {
     }
 
     private void performSearch(TrefleAPI trefleAPI) {
-        String query = searchEditText.getText().toString();
+        String query = searchEditText.getText().toString().trim(); // Trim to remove leading/trailing spaces
         if (!query.isEmpty()) {
             // Make API request
             Call<JsonObject> call = trefleAPI.searchPlants("Kp-iRX49lqA7O9-zm5HO1NiperZb4Qs6HAo-jtt6oaI", query);
@@ -89,6 +90,8 @@ public class SearchPage extends Fragment {
 
                         // Notify the adapter that the data set has changed
                         searchResultsAdapter.notifyDataSetChanged();
+                        // Add a log statement for debugging
+                        Log.d("SearchPage", "Search results updated. Count: " + searchResultsList.size());
                     } else {
                         Toast.makeText(getActivity(), "Error: " + response.message(), Toast.LENGTH_SHORT).show();
                     }
@@ -104,6 +107,9 @@ public class SearchPage extends Fragment {
                     return (element != null && !element.isJsonNull()) ? element.getAsString() : "";
                 }
             });
+        } else {
+            // Add a log statement for debugging
+            Log.d("SearchPage", "Empty query. Skipping search.");
         }
     }
 }
