@@ -5,11 +5,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL = "https://trefle.io/api/v1/"; // Replace with your Trefle API base URL
+    private static final String BASE_URL = "https://trefle.io/api/v1/";
 
     private static Retrofit retrofit;
 
-    public static TrefleAPI getTrefleAPI() {
+    public static TrefleAPI getTrefleAPI(String token) {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

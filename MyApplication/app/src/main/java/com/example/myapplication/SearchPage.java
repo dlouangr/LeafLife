@@ -11,7 +11,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -35,14 +34,14 @@ public class SearchPage extends Fragment {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
         // Initialize Retrofit
-        TrefleAPI trefleAPI = RetrofitClient.getTrefleAPI();
+        TrefleAPI trefleAPI = RetrofitClient.getTrefleAPI("Kp-iRX49lqA7O9-zm5HO1NiperZb4Qs6HAo-jtt6oaI");
 
         searchEditText = view.findViewById(R.id.searchEditText);
         searchResultsRecyclerView = view.findViewById(R.id.searchResultsRecyclerView);
 
         // Set up RecyclerView and adapter
         searchResultsList = new ArrayList<>();
-        searchResultsAdapter = new SearchResultsAdapter(getActivity(), searchResultsList); // Pass getActivity() as the context
+        searchResultsAdapter = new SearchResultsAdapter(getActivity(), searchResultsList);
         searchResultsRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         searchResultsRecyclerView.setAdapter(searchResultsAdapter);
 
@@ -62,7 +61,7 @@ public class SearchPage extends Fragment {
         String query = searchEditText.getText().toString();
         if (!query.isEmpty()) {
             // Make API request
-            Call<JsonObject> call = trefleAPI.searchPlants(query, "Kp-iRX49lqA7O9-zm5HO1NiperZb4Qs6HAo-jtt6oaI");
+            Call<JsonObject> call = trefleAPI.searchPlants("Kp-iRX49lqA7O9-zm5HO1NiperZb4Qs6HAo-jtt6oaI", query);
             call.enqueue(new Callback<JsonObject>() {
                 @Override
                 public void onResponse(Call<JsonObject> call, Response<JsonObject> response) {
@@ -77,12 +76,12 @@ public class SearchPage extends Fragment {
                         for (JsonElement element : data) {
                             JsonObject plantObject = element.getAsJsonObject();
 
-                            String commonName = plantObject.get("common_name").getAsString();
-                            String family = plantObject.get("family").getAsString();
-                            String genus = plantObject.get("genus").getAsString();
                             int id = plantObject.get("id").getAsInt();
-                            String imageUrl = plantObject.get("image_url").getAsString();
-                            String scientificName = plantObject.get("scientific_name").getAsString();
+                            String commonName = getStringFromJson(plantObject, "common_name");
+                            String family = getStringFromJson(plantObject, "family");
+                            String genus = getStringFromJson(plantObject, "genus");
+                            String imageUrl = getStringFromJson(plantObject, "image_url");
+                            String scientificName = getStringFromJson(plantObject, "scientific_name");
 
                             Plant plant = new Plant(commonName, family, genus, id, imageUrl, scientificName);
                             searchResultsList.add(plant);
@@ -99,8 +98,12 @@ public class SearchPage extends Fragment {
                 public void onFailure(Call<JsonObject> call, Throwable t) {
                     Toast.makeText(getActivity(), "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
+                private String getStringFromJson(JsonObject jsonObject, String key) {
+                    JsonElement element = jsonObject.get(key);
+                    return (element != null && !element.isJsonNull()) ? element.getAsString() : "";
+                }
             });
         }
     }
-
 }
