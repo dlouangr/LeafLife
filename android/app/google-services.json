@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1011696699856",
+    "project_id": "leaflife-6a8bf",
+    "storage_bucket": "leaflife-6a8bf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011696699856:android:19e3146f09b153a8fe91d5",
+        "android_client_info": {
+          "package_name": "com.mycompany.leaflife"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAJPjqTYsVLLsulXgj7SrolChKC236kAxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
